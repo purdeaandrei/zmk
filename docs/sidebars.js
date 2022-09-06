@@ -18,6 +18,7 @@ module.exports = {
       "features/encoders",
       "features/underglow",
       "features/backlight",
+      "features/led-indicators",
       "features/battery",
       "features/beta-testing",
     ],

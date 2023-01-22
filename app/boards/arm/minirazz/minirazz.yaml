@@ -1,0 +1,18 @@
+identifier: minirazz
+name: MINIRAZZ
+type: keyboard
+arch: arm
+flash: 2048
+ram: 264
+toolchain:
+  - zephyr
+  - gnuarmemb
+  - xtools
+supported:
+  - serial
+  - gpio
+  - spi
+  - kscan
+  - usb_device
+
+

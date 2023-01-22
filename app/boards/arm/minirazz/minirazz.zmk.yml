@@ -1,0 +1,10 @@
+file_format: "1"
+id: minirazz
+name: MiniRazz
+type: board
+arch: arm
+features:
+  - keys
+outputs:
+  - usb
+url: https://github.com/purdeaandrei/MiniRazz

@@ -4,11 +4,12 @@ manifest:
       url-base: https://github.com/zephyrproject-rtos
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
+    - name: purdeaandrei
+      url-base: https://github.com/purdeaandrei
   projects:
     - name: zephyr
-      remote: zmkfirmware
-      revision: v3.2.0+zmk-fixes
-      clone-depth: 1
+      remote: purdeaandrei
+      revision: zephyr_changes_needed_for_minirazz_may_change_history
       import:
         # TODO: Rename once upstream offers option like `exclude` or `denylist`
         name-blacklist:

@@ -1,0 +1,8 @@
+# MiniRazz controller for the Unicomp Mini M configuration
+
+# Copyright (c) 2021-2023 Pete Johanson, Andrei Purdea
+# SPDX-License-Identifier: Apache-2.0
+
+config BOARD_MINIRAZZ
+	bool "MiniRazz controller for the Unicomp Mini M"
+	depends on SOC_RP2040

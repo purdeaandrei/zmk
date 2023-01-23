@@ -6,12 +6,12 @@
 
 #pragma once
 
-#include <device.h>
+#include <zephyr/device.h>
 #include <stdbool.h>
 #include <stdint.h>
-#include <drivers/gpio.h>
-#include <dt-bindings/gpio/gpio.h>
-#include <sys/util.h>
+#include <zephyr/drivers/gpio.h>
+#include <zephyr/dt-bindings/gpio/gpio.h>
+#include <zephyr/sys/util.h>
 
 struct kscan_gpio {
     struct gpio_dt_spec spec;

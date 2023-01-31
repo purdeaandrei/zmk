@@ -11,12 +11,21 @@
 
 #ifdef ZMK_KEYMAP_TRANSFORM_NODE
 
+#if ZMK_KEYMAP_LEN - 1 > INT32_MAX
+    #error "Transform is too large"
+#elif ZMK_KEYMAP_LEN - 1 + 1 > (1 << 16) - 1
+    #define TRANSFORM_TYPE uint32_t
+#elif ZMK_KEYMAP_LEN - 1 + 1 > (1 << 8) - 1
+    #define TRANSFORM_TYPE uint16_t
+#else
+    #define TRANSFORM_TYPE uint8_t
+#endif
+
 #define _TRANSFORM_ENTRY(i, _)                                                                     \
     [(KT_ROW(DT_PROP_BY_IDX(ZMK_KEYMAP_TRANSFORM_NODE, map, i)) * ZMK_MATRIX_COLS) +               \
         KT_COL(DT_PROP_BY_IDX(ZMK_KEYMAP_TRANSFORM_NODE, map, i))] = i + 1
 
-static uint32_t transform[] = {LISTIFY(ZMK_KEYMAP_LEN, _TRANSFORM_ENTRY, (, ), 0)};
-
+static const TRANSFORM_TYPE transform[] = {LISTIFY(ZMK_KEYMAP_LEN, _TRANSFORM_ENTRY, (, ), 0)};
 #endif
 
 int32_t zmk_matrix_transform_row_column_to_position(uint32_t row, uint32_t column) {

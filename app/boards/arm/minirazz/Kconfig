@@ -1,0 +1,14 @@
+# MiniRazz controller for the Unicomp Mini M configuration
+
+# Copyright (c) 2021-2023 Andrei Purdea
+# SPDX-License-Identifier: Apache-2.0
+
+config DISABLE_NUMLOCK_TOGGLES_LAYER
+	bool "Disable toggling a layer on NumLock locklight status change"
+	depends on BOARD_MINIRAZZ
+	default n
+
+config NUMLOCK_TOGGLES_THIS_LAYER
+	int "The number of the layer that NumLock toggles"
+	depends on !DISABLE_NUMLOCK_TOGGLES_LAYER
+	default 1

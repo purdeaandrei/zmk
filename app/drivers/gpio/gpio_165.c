@@ -12,21 +12,21 @@
 
 #include <errno.h>
 
-#include <kernel.h>
-#include <device.h>
-#include <init.h>
-#include <sys/byteorder.h>
-#include <drivers/gpio.h>
-#include <drivers/spi.h>
+#include <zephyr/kernel.h>
+#include <zephyr/device.h>
+#include <zephyr/init.h>
+#include <zephyr/sys/byteorder.h>
+#include <zephyr/drivers/gpio.h>
+#include <zephyr/drivers/spi.h>
 
 #define LOG_LEVEL CONFIG_GPIO_LOG_LEVEL
 
 #define LOAD_GPIOS_LEN(n) DT_INST_PROP_LEN(n, load_gpios)
 #define LOAD_GPIO_CFG_INIT(idx, inst_idx)                        \
-    GPIO_DT_SPEC_GET_BY_IDX(DT_DRV_INST(inst_idx), load_gpios, idx),
+    GPIO_DT_SPEC_GET_BY_IDX(DT_DRV_INST(inst_idx), load_gpios, idx)
 
 
-#include <logging/log.h>
+#include <zephyr/logging/log.h>
 LOG_MODULE_REGISTER(gpio_165);
 
 /** Configuration data */
@@ -208,7 +208,7 @@ static int reg_165_init(const struct device *dev) {
 #define REG_165_INIT(n)                                                                            \
     static const struct gpio_dt_spec load_gpios_##n[] = {                                          \
         COND_CODE_1(DT_INST_NODE_HAS_PROP(n, load_gpios),                                          \
-        (UTIL_LISTIFY(LOAD_GPIOS_LEN(n), LOAD_GPIO_CFG_INIT, n)),                                  \
+        (LISTIFY(LOAD_GPIOS_LEN(n), LOAD_GPIO_CFG_INIT, (,), n)),                                  \
         ())};                                                                                      \
     static struct reg_165_config reg_165_##n##_config = {                                          \
         .common =                                                                                  \
